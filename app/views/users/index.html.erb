@@ -1,0 +1,29 @@
+<%= render 'templates/navbar' %>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+<h3>You enter as <%= @current_user %> </h3>
+
+<div>
+  <div>
+    <% @users.each do |user| %>
+      <div>
+        ID: <%= user.id %>
+        Login: <%= user.login %><br>
+        Password: <%= user.password %><br>
+        Email: <%= user.email %><br>
+        Age: <%= user.age %><br>
+        <% if @current_user %>
+          <%= link_to 'Show', user %>
+          <%= link_to 'Edit', edit_user_path(user) %>
+          <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+          <div>
+            <%= render 'templates/records_list' %>
+          </div>
+        <%end%>
+        <br>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= link_to 'Registration', new_user_path %>

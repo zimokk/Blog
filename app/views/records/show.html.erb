@@ -1,0 +1,39 @@
+<%= render 'templates/navbar' %>
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <a href="/records">
+    <div class="col-sm-2 btn btn-default">
+      All records
+    </div>
+  </a>
+  <div class="col-sm-8">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3><%= @record.theme %></h3>
+          </div>
+          <div class="panel-body">
+            <%= @record.body %>            
+          </div>
+          <div>
+            <div class="row">
+              <div class="col-sm-1">Pэ
+                <%= @record.rating %>                
+              </div>
+              <div class="col-sm-8">
+             	<%if @record.user_id == @current_user_id%>
+	                <%= link_to 'Edit', edit_record_path(@record) %>
+	                <%= link_to 'Destroy', @record, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%end%>
+              </div>
+              <div class="col-sm-2">
+                Author: <%= @record.user_id %>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+  <div class="col-sm-2">
+
+  </div>
+</div>
